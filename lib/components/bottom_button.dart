@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
 
-  String labelTextButton;
-  String route;
+  final String labelTextButton;
+  final VoidCallback onTap;
 
-  BottomButton({required this.labelTextButton, required this.route});
+  BottomButton({required this.labelTextButton, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-       if (route.trim() != ''){
-         Navigator.pushNamed(context, route);
-       } else {
-         Navigator.pop(context);
-       }
-      },
+      onTap: onTap,
       child: Container(
         child: Center(
           child: Text(
